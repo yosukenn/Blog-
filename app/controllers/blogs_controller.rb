@@ -10,6 +10,7 @@ class BlogsController < ApplicationController
 
   def create
     Article.create(article_params)
+    redirect_to action: :index
   end
 
   def show
