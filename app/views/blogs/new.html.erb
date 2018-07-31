@@ -1,23 +1,24 @@
 <div class="container">
   <!-- Page Content goes here -->
   <div class="row">
-    <form class="col s12">
+    <%= form_for(@article, url: blogs_path, html: {class: "col s12"}) do |f| %>
       <div class="row">
         <div class="input-field col s6">
-          <input id="input_text" type="text" data-length="10" name="name">
-          <label for="input_text">Input text</label>
+          <%= f.label :name %>
+          <%= f.text_field :name, html: {id: 'input_text'}, maxlength: '10' %>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea" data-length="120" name="text"></textarea>
-          <label for="textarea1">Textarea</label>
+          <%= f.label :text %>
+          <%= f.text_area :text, id: 'textarea1', class: 'materialize-textarea', maxlength: '120' %>
         </div>
       </div>
       <div class="input-field col s12">
-        <input type="submit" id="submit" value="投稿">
+        <%=f.submit id: 'submit', value: '投稿' %>
         <label for="submit"></label>
       </div>
     </form>
+    <% end %>
   </div>
 </div>
