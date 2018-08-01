@@ -35,6 +35,6 @@ class BlogsController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:name, :text)
+    params.require(:article).permit(:text).merge(user_id: current_user.id)
   end
 end
