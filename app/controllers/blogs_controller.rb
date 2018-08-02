@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show, :edit]
 
   def index
     @articles = Article.order('created_at DESC')
@@ -25,6 +26,9 @@ class BlogsController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    if user_signed_in? && current_user.id != @article.user_id
+      redirect_to root_path
+    end
   end
 
   def update
@@ -35,6 +39,6 @@ class BlogsController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:name, :text)
+    params.require(:article).permit(:text).merge(user_id: current_user.id)
   end
 end

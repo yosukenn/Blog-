@@ -1,10 +1,12 @@
 <div class="container">
   <!-- Page Content goes here -->
     <div class="row">
+      <div class="col s12 m3">
+      </div>
       <div class="col s12 m6">
         <div class="card blue lighten-5">
           <div class="card-content black-text">
-            <span class="card-title"><%= @article.name %></span>
+            <span class="card-title"><%= @article.user.name %></span>
             <p><%= @article.text %></p>
           </div>
         </div>

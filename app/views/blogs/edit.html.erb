@@ -3,12 +3,6 @@
   <div class="row">
     <%= form_for(@article, url: blog_path, html: {class: "col s12"}) do |f| %>
       <div class="row">
-        <div class="input-field col s6">
-          <%= f.label :name %>
-          <%= f.text_field :name, html: {id: 'input_text'}, maxlength: '10' %>
-        </div>
-      </div>
-      <div class="row">
         <div class="input-field col s12">
           <%= f.label :text %>
           <%= f.text_area :text, id: 'textarea1', class: 'materialize-textarea', maxlength: '120' %>
