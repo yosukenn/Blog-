@@ -26,6 +26,9 @@ class BlogsController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    if user_signed_in? && current_user.id != @article.user_id
+      redirect_to root_path
+    end
   end
 
   def update
