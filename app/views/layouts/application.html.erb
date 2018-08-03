@@ -13,6 +13,8 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   </head>
 
   <body>
@@ -26,7 +28,11 @@
           <% if user_signed_in? %>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             <li><%= link_to current_user.name, user_path(current_user) %></li>
-            <li><%= link_to "投稿", new_blog_path, method: :get %></li>
+            <li>
+              <%= link_to new_blog_path, method: :get do %>
+                <i class="tiny material-icons">create</i>
+              <% end %>
+            </li>
           <% else %>
             <li><%= link_to "新規登録", new_user_registration_path, method: :get %></li>
             <li><%= link_to "ログイン", new_user_session_path, method: :get %></li>
