@@ -1,0 +1,21 @@
+<% articles.each do |article| %>
+  <div class="row">
+    <div class="col s12 m3">
+    </div>
+    <div class="col s12 m6">
+      <div class="card blue lighten-5">
+        <div class="card-content black-text">
+          <span class="card-title"><%= article.user.name %></span>
+          <p><%= article.text %></p>
+        </div>
+        <div class="card-action">
+          <a><%= link_to "Show", blog_path(article), method: :get %></a>
+          <% if user_signed_in? && current_user.id == article.user_id %>
+            <a><%= link_to "Edit", edit_blog_path(article), method: :get %></a>
+            <a><%= link_to "Delete", blog_path(article), method: :delete %></a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
