@@ -18,7 +18,11 @@
                 <i class="tiny material-icons">edit</i>
               <% end %>
             </a>
-            <a><%= link_to "Delete", blog_path(article), method: :delete %></a>
+            <a>
+              <%= link_to blog_path(article), method: :delete do %>
+                <i class="tiny material-icons">delete</i>
+              <% end %>
+            </a>
           <% end %>
         </div>
       </div>
