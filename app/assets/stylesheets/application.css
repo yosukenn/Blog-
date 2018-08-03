@@ -1,3 +1,17 @@
+.flash {
+  color: #fff;
+  text-align: center;
+}
+
+.flash__alert {
+  background-color: #ea5550;
+}
+
+.flash__notice {
+  background-color: #009854;
+}
+
+
 .cols {
   margin: 0 auto;
 }

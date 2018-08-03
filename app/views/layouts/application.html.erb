@@ -16,6 +16,9 @@
   </head>
 
   <body>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "flash flash__#{key}") %>
+    <% end %>
     <nav>
       <div class="nav-wrapper indigo darken-4">
         <a href="/" class="brand-logo">Blog!</a>
