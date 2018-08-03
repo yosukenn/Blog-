@@ -26,7 +26,7 @@ class BlogsController < ApplicationController
   def destroy
     article = Article.find(params[:id])
     article.destroy
-    redirect_to action: :index
+    redirect_to root_path, notice: '投稿を削除しました。'
   end
 
   def edit
