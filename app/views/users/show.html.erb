@@ -25,7 +25,9 @@
     <div class="col s12 m6">
     </div>
     <div class="col s12 m6">
-      <%= link_to 'ユーザー情報の変更', edit_user_registration_path %>
+      <% if User.find(params[:id]).id == current_user.id %>
+        <%= link_to 'ユーザー情報の変更', edit_user_registration_path %>
+      <% end %>
     </div>
   </div>
 </div>
