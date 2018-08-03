@@ -10,8 +10,13 @@ class BlogsController < ApplicationController
   end
 
   def create
-    Article.create(article_params)
-    redirect_to action: :index
+    @article = Article.new(article_params)
+    if @article.save
+      redirect_to root_path, notice: "投稿を完了しました。"
+    else
+      flash.now[:alert] = 'textを入力してください'
+      render :new
+    end
   end
 
   def show
@@ -32,9 +37,13 @@ class BlogsController < ApplicationController
   end
 
   def update
-    article = Article.find(params[:id])
-    article.update(article_params)
-    redirect_to action: :index
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+      redirect_to root_path, notice: "投稿を編集しました。"
+    else
+      flash.now[:alert] = 'textを入力してください'
+      render :edit
+    end
   end
 
   private
