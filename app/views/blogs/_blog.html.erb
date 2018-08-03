@@ -5,7 +5,9 @@
     <div class="col s12 m6">
       <div class="card blue lighten-5">
         <div class="card-content black-text">
-          <span class="card-title"><%= article.user.name %></span>
+          <span class="card-title">
+            <%= link_to article.user.name, user_path(article.user) %>
+          </span>
           <p><%= article.text %></p>
         </div>
         <div class="card-action">
