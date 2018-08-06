@@ -6,8 +6,16 @@
         <div class="col s12 m3">
         </div>
         <div class="input-field col s12 m6">
+          <%= f.label :title %>
+          <%= f.text_field :title, id: 'textarea1', class: 'materialize-textarea' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m3">
+        </div>
+        <div class="input-field col s12 m6">
           <%= f.label :text %>
-          <%= f.text_area :text, id: 'textarea1', class: 'materialize-textarea', maxlength: '120' %>
+          <%= f.text_area :text, id: 'textarea1', class: 'materialize-textarea'%>
         </div>
       </div>
       <div class="col s12 m3">
