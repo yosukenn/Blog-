@@ -1,0 +1,17 @@
+.content__action {
+  clear: both;
+}
+
+.content__info {
+  float: right;
+}
+
+.content__info__user {
+  padding-right: 10px;
+  font-size: 15px;
+}
+
+.content__info__date {
+  font-size: 12px;
+  padding-right: 30px;
+}

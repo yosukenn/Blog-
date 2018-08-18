@@ -3,15 +3,18 @@
     <div class="col s12 m3">
     </div>
     <div class="col s12 m6">
-      <div class="card blue lighten-5">
-        <div class="card-content black-text">
+      <div class="card blue lighten-5 content">
+        <div class="card-content black-text content__article">
           <span class="card-title">
-            <%= link_to article.user.name, user_path(article.user) %>
+            <%= link_to article.title, blog_path(article) %>
           </span>
-          <p><%= article.text %></p>
+          <p><%= article.text.truncate(90) %></p>
         </div>
-        <div class="card-action">
-          <a><%= link_to "Show", blog_path(article), method: :get %></a>
+        <div class="content__info">
+          <span class="content__info__user"><%= link_to article.user.name, user_path(article.user) %></span>
+          <span class="content__info__date"><%= article.created_at.to_s(:created_at) %></span>
+        </div>
+        <div class="card-action content__action">
           <% if user_signed_in? && current_user.id == article.user_id %>
             <a>
               <%= link_to edit_blog_path(article), method: :get do %>
@@ -23,7 +26,8 @@
                 <i class="tiny material-icons">delete</i>
               <% end %>
             </a>
-            <% if like = Like.find_by(user_id: current_user.id, article_id: article.id) %>
+          <% end %>
+          <% if like = like_present?(article) %>
             <a>
               <%= link_to blog_like_path(article, like), method: :delete do %>
                 <i class="tiny material-icons">favorite</i>
@@ -37,24 +41,6 @@
                 <%= article.likes.count %>
               <% end %>
             </a>
-            <% end %>
-
-          <% elsif user_signed_in? %>
-            <% if like = Like.find_by(user_id: current_user.id, article_id: article.id) %>
-            <a>
-              <%= link_to blog_like_path(article, like), method: :delete do %>
-                <i class="tiny material-icons">favorite</i>
-                <%= article.likes.count %>
-              <% end %>
-            </a>
-            <% else %>
-            <a>
-              <%= link_to blog_likes_path(article), method: :post do %>
-                <i class="tiny material-icons">favorite_border</i>
-                <%= article.likes.count %>
-              <% end %>
-            </a>
-            <% end %>
           <% end %>
         </div>
       </div>
