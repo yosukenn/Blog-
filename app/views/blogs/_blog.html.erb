@@ -26,7 +26,8 @@
                 <i class="tiny material-icons">delete</i>
               <% end %>
             </a>
-            <% if like = Like.find_by(user_id: current_user.id, article_id: article.id) %>
+          <% end %>
+          <% if like = like_present?(article) %>
             <a>
               <%= link_to blog_like_path(article, like), method: :delete do %>
                 <i class="tiny material-icons">favorite</i>
@@ -40,24 +41,6 @@
                 <%= article.likes.count %>
               <% end %>
             </a>
-            <% end %>
-
-          <% elsif user_signed_in? %>
-            <% if like = Like.find_by(user_id: current_user.id, article_id: article.id) %>
-            <a>
-              <%= link_to blog_like_path(article, like), method: :delete do %>
-                <i class="tiny material-icons">favorite</i>
-                <%= article.likes.count %>
-              <% end %>
-            </a>
-            <% else %>
-            <a>
-              <%= link_to blog_likes_path(article), method: :post do %>
-                <i class="tiny material-icons">favorite_border</i>
-                <%= article.likes.count %>
-              <% end %>
-            </a>
-            <% end %>
           <% end %>
         </div>
       </div>
